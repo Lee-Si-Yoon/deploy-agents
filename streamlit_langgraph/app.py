@@ -1,15 +1,12 @@
 import os
-
-with open(".env", "r") as f:
-    for line in f:
-        key, value = line.split("=")
-        os.environ[key] = value.strip()
-
 import streamlit as st
 from langchain_core.messages import HumanMessage
 
 from agent import CONVERSATION, receive_message_from_caller
 from tools import APPOINTMENTS
+
+os.environ["LANGSMITH_PROJECT"] = st.secrets["LANGSMITH_PROJECT"]
+os.environ["MISTRAL_API_KEY"] = st.secrets["MISTRAL_API_KEY"]
 
 def submit_message():
     receive_message_from_caller(st.session_state["message"])
