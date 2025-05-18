@@ -1,0 +1,6 @@
+langgraph 
+langchain_community 
+langchain_core
+langchain-mistralai
+streamlit
+ipykernel
